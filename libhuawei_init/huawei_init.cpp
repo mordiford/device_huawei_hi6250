@@ -83,24 +83,34 @@ void vendor_load_default_properties() {
 	return;
 
     /* All P9-Lite needs this */
-    if(!strncmp(model,"VNS", 3)) 
+    if(!strncmp(model,"VNS", 3)) {
 	set_property(BOARDID_PRODUCT_PROP,"51316");
     /* All Berlin needs this */
-    if(!strncmp(model, "BLN", 3))
+    } else if(!strncmp(model, "BLN", 3)) {
 	set_property(BOARDID_PRODUCT_PROP, "61202");
     /* All Prague needs this */
-    if(!strncmp(model, "PRA", 3))
+    } else if(!strncmp(model, "PRA", 3)) {
 	set_property(BOARDID_PRODUCT_PROP, "61285");
     /* All Warsaw needs this */
-    if(!strncmp(model, "WAS", 3))
+    } else if(!strncmp(model, "WAS", 3)) {
 	set_property(BOARDID_PRODUCT_PROP, "61457");
+	/* Meticulus:
+	 * For some odd reason the camera reports that it can
+	 * not set a preview frame rato of 30. A frame rate of 25
+	 * works but mysteriously, the media_profiles.xml which
+	 * defines what framerates are supported all show 30. So
+	 * I modified it to 25 on the rear camera and specify
+	 * this prop to load this one instead of the one at
+	 * /vendor/etc
+	 */
+	set_property("media.settings.xml", "/etc/media_profiles_was.xml");
     /* All Honor 5c/Honor 7 lite needs this */
-    if(!strncmp(model, "NEM", 3) || !strncmp(model, "NMO", 3))
+    } else if(!strncmp(model, "NEM", 3) || !strncmp(model, "NMO", 3)) {
 	set_property(BOARDID_PRODUCT_PROP, "4873");
     /* Dallas? */
-    if(!strncmp(model, "DAL", 3))
+    } else if(!strncmp(model, "DAL", 3)) {
 	set_property(BOARDID_PRODUCT_PROP, "6198");
-
+    }
     /* if a match is not found the values in the build.prop will be used.
      * ro.boardid.product will not be set so the camera will not work.
      */
