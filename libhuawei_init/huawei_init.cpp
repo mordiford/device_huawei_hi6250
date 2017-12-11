@@ -158,8 +158,8 @@ static void load_product_props() {
 static void load_modem_props() {
     int fd = -1,retval = 0,on = 0;
     FILE * pf;
-    char buff[255];
-    char modemid[255];
+    char buff[255] = {0};
+    char modemid[255] = {0};
     fd = open(MODEM_ID_PATH, O_RDONLY);
     if(fd < 0 ) {
 	klog_write(0, "huawei_init: Couldn't get modem id?\n");
@@ -171,12 +171,6 @@ static void load_modem_props() {
     size_t size = read(fd, buff, 254);
     sprintf(modemid, "0X%X%X%X%X%X", buff[0], buff[1],buff[2],buff[3],buff[4]);
     close(fd);
-    /* Meticulus:
-     * Strange, my modem id is not in phone.prop?
-     */
-    if(!strcmp(modemid, "0X3B412004"))
-	sprintf(modemid, "%s", "0X3B412000");
-
     klog_write(0,"huawei_init: modemid = %s\n", modemid);
     sprintf(buff, "[%s]:\n",modemid);
     sprintf(modemid, "%s", buff);
