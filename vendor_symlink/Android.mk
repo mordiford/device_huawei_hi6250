@@ -656,9 +656,11 @@ hw := \
     sensorcaps.default.so \
     sensorhub.default.so \
     sound_trigger.primary.default.so \
-    vibrator.default.so
+    vibrator.default.so \
+    vulkan.hi6250.so
 
 hw64 := \
+    activity_reconition.default.so \
     audio.primary.default.so \
     audio.primary.hisi.so \
     audio.r_submix.default.so \
@@ -680,7 +682,8 @@ hw64 := \
     sensorcaps.default.so \
     sensorhub.default.so \
     sound_trigger.primary.default.so \
-    vibrator.default.so
+    vibrator.default.so \
+    vulkan.hi6250.so
 
 symlinks := \
     $(shell rm -rf $(PRODUCT_OUT)/system/vendor/lib64/hw 2> /dev/null) \
