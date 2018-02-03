@@ -1,6 +1,6 @@
 import /init.recovery.huawei.rc
 import /init.recovery.hi6250.usb.rc
-import /init.recovery.meticulus.rc
+import /init.recovery.device.rc
 
 on property:sys.stock=1
     start teecd

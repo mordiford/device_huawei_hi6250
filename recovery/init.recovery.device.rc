@@ -1,0 +1,9 @@
+﻿on init
+  write /sys/touchscreen/easy_wakeup_gesture 1
+  start device_otg
+
+service device_otg /sbin/devotgd
+    user root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0

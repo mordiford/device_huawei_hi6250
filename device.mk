@@ -1,4 +1,4 @@
-#
+﻿#
 # Copyright (C) 2016 Jonathan Jason Dennis (theonejohnnyd@gmail.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 #
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay/common
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, build/target/product/full_base_telephony.mk)
@@ -38,27 +38,17 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/rootdir/init.recovery.hisi.rc:root/init.recovery.hisi.rc \
         $(LOCAL_PATH)/recovery/init.recovery.hi6250.rc:root/init.recovery.hi6250.rc \
         $(LOCAL_PATH)/recovery/init.recovery.hi6250.usb.rc:root/init.recovery.hi6250.usb.rc \
-        $(LOCAL_PATH)/recovery/init.recovery.meticulus.rc:root/init.recovery.meticulus.rc \
+        $(LOCAL_PATH)/recovery/init.recovery.device.rc:root/init.recovery.device.rc \
         $(LOCAL_PATH)/recovery/init.recovery.usb.rc:root/init.recovery.usb.rc
 
 # Media
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/etc/media_profiles_was.xml:system/etc/media_profiles_was.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-
-ifeq ($(TARGET_PRODUCT), omni_hi6250)
-    PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/etc/omni_media_codecs.xml:system/etc/media_codecs.xml
-else ifeq ($(TARGET_PRODUCT), aosp_hi6250)
-    PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/etc/omni_media_codecs.xml:system/etc/media_codecs.xml
-else 
-    PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml
-endif
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -74,7 +64,7 @@ PRODUCT_PACKAGES += \
     libcopybit_wrapper \
     lights.hi6250 \
     sensors.hi6250 \
-    metiotgd \
+    devotgd \
     emui5_vendor_symlinks
 
 # Shim libs

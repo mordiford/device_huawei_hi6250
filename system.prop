@@ -1,5 +1,4 @@
-
-#
+﻿#
 # From Stock
 #
 ro.config.mmu_en=1
@@ -52,9 +51,9 @@ persist.camera.cap_sup_front=3
 #
 # TWRP
 #
-ro.config.twrp=cm_hi6250
+ro.config.twrp=lineage_hi6250
 #
-# Meticulus Lights HAL
+# Lights HAL
 #
 # lp(low power) battery below 25%
 # c (charging) battery above 25% below 90%
@@ -74,7 +73,7 @@ persist.sys.lights_HAL_c=0xffffff00
 persist.sys.lights_HAL_fp=0xff00ff00
 persist.sys.lights_HAL_n=0xff0000ff
 #
-# Meticulus Power HAL
+# Power HAL
 #
 persist.sys.stock_power_HAL=false
 #
@@ -85,3 +84,12 @@ persist.sys.strictmode.disable=true
 # Bluetooth: BLE Switch
 #
 persist.sys.noble=true
+
+
+# Hardware Info for AICP
+ro.device.chipset=HiSilicon Kirin 650
+ro.device.cpu=Octa-core (4x2.0 GHz Cortex-A53 & 4x1.7 GHz Cortex-A53)
+ro.device.gpu=Mali-T830MP2
+ro.device.rear_cam=13 MP
+ro.device.front_cam=8 MP
+ro.device.screen_res=1080 x 1920
